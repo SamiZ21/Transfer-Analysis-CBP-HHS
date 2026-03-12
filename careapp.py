@@ -1,17 +1,14 @@
-from os import link
 
-from matplotlib import lines
-import matplotlib.pyplot as plt
-from narwhals import Date
 import streamlit as st
-import plotly.express as px
-import altair as alt
-import plotly.graph_objects as go
 import pandas as pd 
+import altair as alt
+import plotly.express as px
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import numpy as np
 from datetime import date, timedelta, datetime
-import plotly.figure_factory as ff
-from numpy.random import default_rng as rng, random
 import warnings
+
 warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="CBP and HHS Care Transition Efficiency and Placement Outcome ", page_icon=":hospital:", layout="wide")
@@ -21,7 +18,7 @@ st.markdown(" :pen: This application provides insights into transition efficienc
 
 @st.cache_data
 def load_data():
-    data = pd.read_csv(r"C:\Users\HP\Downloads\Projecthealthcare1\HHS_Unaccompanied_Alien_Children_Program.csv")
+    data = pd.read_csv("HHS_Unaccompanied_Alien_Children_Program.csv")
     data["Date"] = pd.to_datetime(data["Date"])
     data = data.sort_values(by="Date")
     return data
@@ -330,3 +327,4 @@ with tab3:
         fig = px.line(df, x="Date", y=["CBP_Transfer_Ratio", "HHS_Discharge_Ratio"],
                   title="System Efficiency Ratio(%)")
         st.plotly_chart(fig,use_container_width=True)
+
