@@ -12,7 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="CBP and HHS Care Transition Efficiency and Placement Outcome ", page_icon=":hospital:", layout="wide")
-st.image("images/Healthcare_logo.png.png", width=200)
+st.image("Healthcare_logo.png.png", width=180)
 st.title(" :hospital: Care Transition Efficiency and Placement Outcome Analytics")
 st.markdown(" :pen: This application provides insights into transition efficiency and placement outcomes for patients.")
 
@@ -26,7 +26,7 @@ def load_data():
 df = load_data()
 
 with st.sidebar:
-    st.image("images/streamlit_logo.png.png", width=200)
+    st.image("streamlit_logo.png.png", width=200)
     st.title(" :hospital: Healthcare Analytics Dashboard")
 
 
@@ -327,4 +327,5 @@ with tab3:
         fig = px.line(df, x="Date", y=["CBP_Transfer_Ratio", "HHS_Discharge_Ratio"],
                   title="System Efficiency Ratio(%)")
         st.plotly_chart(fig,use_container_width=True)
+
 
